@@ -1,0 +1,116 @@
+﻿@model IEnumerable<BlogPost>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Bootstrap Basic Tables</h4>
+                    <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item">
+                        <a href="index.html"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#!">Bootstrap Table</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#!">Basic Table</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-body">
+
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Inverse Table</h5>
+            <span>use class <code>table-inverse</code> inside table element</span>
+        </div>
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table class="table table-inverse">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Title</th>
+                       
+                           
+                            <th class="operational">
+                                <a asp-action="create" class="btn btn-success">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                  <td>
+
+                                    <img src="~/uploads/images/@item.ImagePath" />
+                                </td>
+                                <td>
+                                    <a asp-area="" asp-controller="blogs" asp-action="details" asp-route-id="@item.Id">
+                                        @item.Title
+                                    </a>
+                                </td>
+            
+                                <td class="operational">
+                                    <a asp-action="details" asp-route-id="@item.Id" class="btn btn-info">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+
+                                    <a asp-action="edit" asp-route-id="@item.Id" class="btn btn-warning">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a onclick="removeEntity(@item.Id,'@item.Title')" class="btn btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+   @section addjs{
+    <script src="~/libs/sweetalert/sweetalert.min.js"></script>
+    <script>
+        function removeEntity(Id, Name) {
+            toastr.success('Message', 'Title');
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            },
+                function () {
+                    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                });
+
+        }
+    </script>
+  }

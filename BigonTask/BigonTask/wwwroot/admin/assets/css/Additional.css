@@ -1,0 +1,26 @@
+﻿span[coloroid]{
+    display:inline-block;
+    width:25px;
+    height:25px;
+    border:1px solid #cdcdcd;
+}
+th.operational,
+td.operational{
+    text-align:right;
+    min-width:170px;
+    width:170px;
+}
+    th.operational .btn ,
+    td.operational .btn  {
+      color:#ffffff;
+    }
+th.operational .btn i,
+td.operational .btn i{
+   margin-right:unset;
+}
+td>img{
+    width:100px;
+}
+.table td{
+    vertical-align:middle;
+}
